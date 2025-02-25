@@ -50,7 +50,7 @@ while [ ! -z "$1" ]; do
         --default)
             # Action for DEFAULT CONFIGURATION
             echo "USING DEFAULT AGENT"
-            echo "xvfb-run -a $installDir/BROWSER-USE_CONFIGS/agents/default.py >> $installDir/LOGS/\$(date '+%Y-%m-%d_%H-%M-%S').default-agent.log" > $installDir/agent-launcher.sh
+            echo "xvfb-run -a python3 $installDir/BROWSER-USE_CONFIGS/agents/default.py >> $installDir/LOGS/\$(date '+%Y-%m-%d_%H-%M-%S').default-agent.log" > $installDir/agent-launcher.sh
             ;;
 
             
