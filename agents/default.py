@@ -1,15 +1,34 @@
+import asyncio
 from langchain_openai import ChatOpenAI
 from browser_use import Agent
-import asyncio
 from dotenv import load_dotenv
+import logging
+import random
+import time
+
+# Load environment variables
 load_dotenv()
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 async def main():
     agent = Agent(
-        task="Go to Reddit, search for 'browser-use', click on the first post and return the first comment.",
+        task="Browse google, youtube, and shop like an average human.",
         llm=ChatOllama(model="deepseek-r1:70b"),
     )
-    result = await agent.run()
-    print(result)
+    
+    while True:
+        try:
+            result = await agent.run()
+            print(result)
+            # Simulate realistic human behavior with random delays
+            time.sleep(random.uniform(1, 3))
+        except Exception as e:
+            logger.error(f"An error occurred: {e}")
+            # Wait before retrying
+            time.sleep(random.uniform(5, 10))
 
-asyncio.run(main())
+if __name__ == "__main__":
+    asyncio.run(main())
