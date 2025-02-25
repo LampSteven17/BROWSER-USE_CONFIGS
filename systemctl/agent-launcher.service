@@ -1,0 +1,12 @@
+[Unit]
+Description=Launches Agent for Browser Use
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /home/ubuntu/agent-launcher.sh
+Restart=always
+User=ubuntu
+WorkingDirectory=/home/ubuntu
+
+[Install]
+WantedBy=multi-user.target

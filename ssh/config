@@ -1,0 +1,15 @@
+Host axes
+    HostName axes.cs.virginia.edu
+    User vxn3kr
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_rsa
+    ProxyJump CSPORTAL
+    ServerAliveInterval 120
+
+Host axes-gpu1
+    HostName 10.246.115.69
+    User ubuntu
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_rsa
+    ProxyJump axes
+    ServerAliveInterval 120

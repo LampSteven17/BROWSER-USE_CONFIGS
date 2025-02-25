@@ -1,0 +1,12 @@
+[Unit]
+Description=Axes GPU1 Ollama Tunnel
+After=network.target
+
+[Service]
+ExecStart=/bin/bash /home/ubuntu/BROWSER-USE_CONFIGS/axes-gpu1-ollama-tunnel.sh
+Restart=always
+User=ubuntu
+WorkingDirectory=/home/ubuntu
+
+[Install]
+WantedBy=multi-user.target
