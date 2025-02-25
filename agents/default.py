@@ -1,5 +1,6 @@
 import asyncio
 from langchain_openai import ChatOpenAI
+from langchain_ollama import ChatOllama
 from browser_use import Agent
 from dotenv import load_dotenv
 import logging
