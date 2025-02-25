@@ -18,7 +18,7 @@ sudo apt-get update -y
 sudo add-apt-repository ppa:deadsnakes/ppa -y
 sudo apt update -y
 
-sudo apt-get install libatk1.0-0t64 libatk-bridge2.0-0t64 libcups2t64 libxcomposite1 libxdamage1 libpango-1.0-0 libcairo2 libasound2t64 libatspi2.0-0t64
+sudo apt-get install libatk1.0-0t64 libatk-bridge2.0-0t64 libcups2t64 libxcomposite1 libxdamage1 libpango-1.0-0 libcairo2 libasound2t64 libatspi2.0-0t64 -y
 sudo apt-get install python3.11 python3.11-venv -y
 sudo apt-get install xvfb -y
 
@@ -50,7 +50,7 @@ while [ ! -z "$1" ]; do
         --default)
             # Action for DEFAULT CONFIGURATION
             echo "USING DEFAULT AGENT"
-            echo "xvfb-run -a python3 $installDir/BROWSER-USE_CONFIGS/agents/default.py >> $installDir/LOGS/\$(date '+%Y-%m-%d_%H-%M-%S').default-agent.log" > $installDir/agent-launcher.sh
+            echo "source busevenv/bin/activate;xvfb-run -a python3 $installDir/BROWSER-USE_CONFIGS/agents/default.py >> $installDir/LOGS/\$(date '+%Y-%m-%d_%H-%M-%S').default-agent.log" > $installDir/agent-launcher.sh
             ;;
 
             
