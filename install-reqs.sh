@@ -11,24 +11,26 @@ mkdir $installDir/LOGS
 git clone https://github.com/browser-use/browser-use.git
 
 
-##### MOVE SSH FILES TO DIRECTORY ~/.ssh #####
-mv BROWSER-USE_CONFIGS/ssh/config $installDir/.ssh/
-
 
 ##### INSTALL LINUX REQUIREMENTS #####
 sudo apt-get update -y
 
-sudo apt-get install python3-pip python3-venv -y
+sudo add-apt-repository ppa:deadsnakes/ppa -y
+sudo apt update -y
+
+sudo apt-get install libatk1.0-0t64 libatk-bridge2.0-0t64 libcups2t64 libxcomposite1 libxdamage1 libpango-1.0-0 libcairo2 libasound2t64 libatspi2.0-0t64
+sudo apt-get install python3.11 python3.11-venv -y
 sudo apt-get install xvfb -y
 
 
 echo "CREATING PYTHON3 VENV"
-python3.11 -m venv browser-use
-source browser-use/bin/activate
+python3.11 -m venv busevenv
+source busevenv/bin/activate
 
 echo "INSTALLING PYTHON PACKAGES"
 python3 -m pip install browser-use pytest-playwright
 playwright install
+
 
 
 # Loop through all the positional parameters
