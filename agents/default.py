@@ -16,8 +16,8 @@ logger = logging.getLogger(__name__)
 
 async def main():
     agent = Agent(
-        task="Browse google, youtube, and shop like an average human.",
-        llm=ChatOllama(model="deepseek-r1:70b"),
+        task="Imagine that you are a real human, and that you have access to a computer. Perform real actions on that computer such as making searches on google, browsing youtube, and shopping online. You can imagine you are any gender. Make sure to take breaks and sleep. ",
+        llm=ChatOllama(model="qwen2.5:72b"),
     )
     
     while True:
