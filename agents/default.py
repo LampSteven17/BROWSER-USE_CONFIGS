@@ -18,18 +18,13 @@ async def main():
     agent = Agent(
         task="Imagine that you are a real human, and that you have access to a computer. Perform real actions on that computer such as making searches on google, browsing youtube, and shopping online. You can imagine you are any gender. Make sure to take breaks and sleep. ",
         llm=ChatOllama(model="qwen2.5:72b"),
+        use_vision=True, 
     )
     
-    while True:
-        try:
-            result = await agent.run()
-            print(result)
-            # Simulate realistic human behavior with random delays
-            time.sleep(random.uniform(1, 3))
-        except Exception as e:
-            logger.error(f"An error occurred: {e}")
-            # Wait before retrying
-            time.sleep(random.uniform(5, 10))
+    
+    result = await agent.run()
+    print(result)
+
 
 if __name__ == "__main__":
     asyncio.run(main())
