@@ -59,6 +59,12 @@ while [ ! -z "$1" ]; do
             echo "source busevenv/bin/activate;xvfb-run -a python3 $installDir/BROWSER-USE_CONFIGS/agents/default-phi.py >> $installDir/LOGS/\$(date '+%Y-%m-%d_%H-%M-%S').default-agent.log" > $installDir/agent-launcher.sh
             ;;
 
+        --default-qwq)
+            # Action for DEFAULT CONFIGURATION
+            echo "USING DEFAULT AGENT"
+            echo "source busevenv/bin/activate;xvfb-run -a python3 $installDir/BROWSER-USE_CONFIGS/agents/default-qwq.py >> $installDir/LOGS/\$(date '+%Y-%m-%d_%H-%M-%S').default-agent.log" > $installDir/agent-launcher.sh
+            ;;
+
             
 
         --help)
