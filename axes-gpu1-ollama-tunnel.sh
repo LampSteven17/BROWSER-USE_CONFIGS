@@ -1,1 +1,0 @@
-ssh -N -L 11434:localhost:11434 axes-gpu1

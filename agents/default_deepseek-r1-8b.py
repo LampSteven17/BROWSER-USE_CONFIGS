@@ -1,5 +1,4 @@
 import asyncio
-from langchain_openai import ChatOpenAI
 from langchain_ollama import ChatOllama
 from browser_use import Agent
 from dotenv import load_dotenv
@@ -17,7 +16,7 @@ logger = logging.getLogger(__name__)
 async def main():
     agent = Agent(
         task="Imagine that you are a real human, and that you have access to a computer. Perform real actions on that computer such as making searches on google, browsing youtube, and shopping online. You can imagine you are any gender. Make sure to take breaks and sleep. ",
-        llm=ChatOllama(model="phi4:14b"),
+        llm=ChatOllama(model="deepseek-r1:8b"),
         use_vision=True, 
     )
     
