@@ -3,6 +3,13 @@
 cd $HOME
 mkdir $HOME/LOGS
 
+##### INSTALL CUDA REQUIREMENTS #####
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-keyring_1.1-1_all.deb
+sudo dpkg -i cuda-keyring_1.1-1_all.deb
+sudo apt-get update
+sudo apt-get -y install cuda-toolkit-12-9
+sudo apt-get install -y cuda-drivers
+
 ##### INSTALL LINUX REQUIREMENTS #####
 sudo apt-get update -y
 sudo apt-get install python3.12-venv -y
@@ -50,5 +57,8 @@ echo "ENABLING SYSTEMCTL FOR AGENT-LAUNCHER"
 sudo cp $HOME/BROWSER-USE_CONFIGS/systemctl/agent-launcher.service /etc/systemd/system/
 sudo systemctl enable --now agent-launcher
 sudo systemctl status agent-launcher
+
+
+sudo reboot
 
 
