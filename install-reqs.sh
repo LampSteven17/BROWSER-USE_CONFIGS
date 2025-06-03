@@ -26,7 +26,7 @@ while [ ! -z "$1" ]; do
             # Action for DEFAULT CONFIGURATION
             ollama pull deepseek-r1:8b
             echo "USING DEFAULT AGENT"
-            echo "source busevenv/bin/activate;xvfb-run -a python3 $installDir/BROWSER-USE_CONFIGS/agents/default_deepseek-r1-8b.py >> $installDir/LOGS/\$(date '+%Y-%m-%d_%H-%M-%S').default-agent.log" > $installDir/agent-launcher.sh
+            echo "source buVenv/bin/activate;xvfb-run -a python3 $HOME/BROWSER-USE_CONFIGS/agents/default_deepseek-r1-8b.py >> $HOME/LOGS/\$(date '+%Y-%m-%d_%H-%M-%S').default-agent.log" > $HOME/agent-launcher.sh
             ;;
 
             
