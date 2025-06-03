@@ -19,14 +19,12 @@ async def main():
         llm = ChatOllama(
             base_url="http://127.0.0.1:11434",
             model="deepseek-r1:8b"
-            ),
+        ),
         use_vision=True, 
     )
     
-    
-    result = await agent.run()
-    print(result)
+    await agent.run()
+    #result = await agent.run()
+    #print(result)
 
-
-if __name__ == "__main__":
-    asyncio.run(main())
+asyncio.run(main())
