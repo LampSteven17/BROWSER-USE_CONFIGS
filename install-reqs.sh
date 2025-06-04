@@ -41,10 +41,10 @@ create_agent_launcher() {
     echo "USING DEFAULT: $model Configuration"
     
     # Inject the model line into default_agent.py at line 15
-    sed -i '15i\llm = ChatOllama(model="'$model'")' "$HOME/BROWSER-USE_CONFIGS/agents/default_agent.py"
+    sed -i '15i\llm = ChatOllama(model="'$model'")' "$HOME/BROWSER-USE_CONFIGS/agents/default-agent.py"
     
     # Create the agent launcher script
-    echo "source buVenv/bin/activate;xvfb-run -a python3 $HOME/BROWSER-USE_CONFIGS/agents/default_agent.py >> $HOME/LOGS/\$(date '+%Y-%m-%d_%H-%M-%S').default_agent.log" > "$HOME/agent-launcher.sh"
+    echo "source buVenv/bin/activate;xvfb-run -a python3 $HOME/BROWSER-USE_CONFIGS/agents/default-agent.py >> $HOME/LOGS/\$(date '+%Y-%m-%d_%H-%M-%S').default-agent.log" > "$HOME/agent-launcher.sh"
 }
 
 # Loop through all the positional parameters
@@ -61,6 +61,21 @@ while [ ! -z "$1" ]; do
         --default-gemma3-27b)
             create_agent_launcher "gemma3:27b"
             ;;
+
+        --default-qwen2.5-32b)
+            create_agent_launcher "qwen2.5:32b"
+            ;;
+
+        --default-llama3.2-3b)
+            create_agent_launcher "llama3.2:3b"
+            ;;
+
+        --default-mistral-7b)
+            create_agent_launcher "mistral:7b"
+            ;;
+
+
+            
 
         --help)
             # Display usage information
