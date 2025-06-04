@@ -10,7 +10,11 @@ load_dotenv()
 # Set environment variable to disable Chromium sandbox
 os.environ['CHROME_DEVEL_SANDBOX'] = '/usr/lib/chromium-browser/chrome-sandbox'
 
-llm = ChatOllama(model="phi4:14b")
+##### INJECT LINE FOR MODEL HERE ####
+
+
+
+#####################################
 
 async def main():
     # Create a browser session with no-sandbox arguments

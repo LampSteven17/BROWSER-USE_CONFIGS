@@ -13,10 +13,10 @@ sudo apt-get install -y cuda-drivers
 ##### INSTALL LINUX REQUIREMENTS #####
 sudo apt-get update -y
 
-sudo add-apt-repository ppa:deadsnakes/ppa -y
-sudo apt update -y
-sudo apt-get install python3.11 -y
-sudo apt-get install python3.11-venv -y
+# sudo add-apt-repository ppa:deadsnakes/ppa -y
+# sudo apt update -y
+#sudo apt-get install python3.11 -y
+sudo apt-get install python3.12-venv -y
 sudo apt-get install xvfb -y
 
 #### INSTALL OLLAMA
@@ -24,23 +24,43 @@ curl -fsSL https://ollama.com/install.sh | sh
 
 
 #### INSTALL BROWSER USE
-python3.11 -m venv buVenv
+python3.12 -m venv buVenv
 source buVenv/bin/activate
 pip install browser-use
 playwright install chromium --with-deps --no-shell
 
+
+# Function to create agent launcher
+create_agent_launcher() {
+    local model="$1"
+    
+    # Pull the model
+    ollama pull "$model"
+    
+    # Display configuration message
+    echo "USING DEFAULT: $model Configuration"
+    
+    # Inject the model line into default_agent.py at line 15
+    sed -i '15i\llm = ChatOllama(model="'$model'")' "$HOME/BROWSER-USE_CONFIGS/agents/default_agent.py"
+    
+    # Create the agent launcher script
+    echo "source buVenv/bin/activate;xvfb-run -a python3 $HOME/BROWSER-USE_CONFIGS/agents/default_agent.py >> $HOME/LOGS/\$(date '+%Y-%m-%d_%H-%M-%S').$config_name.log" > "$HOME/agent-launcher.sh"
+}
+
 # Loop through all the positional parameters
 while [ ! -z "$1" ]; do
     case "$1" in
-
         --default-phi4-14b)
-            # Action for DEFAULT CONFIGURATION
-            ollama pull phi4:14b
-            echo "USING DEFAULT:Phi 4 14b Configuration"
-            echo "source buVenv/bin/activate;xvfb-run -a python3 $HOME/BROWSER-USE_CONFIGS/agents/default_microsoft_phi4-14b.py >> $HOME/LOGS/\$(date '+%Y-%m-%d_%H-%M-%S').default_microsoft_phi4-14b.log" > $HOME/agent-launcher.sh
+            create_agent_launcher "phi4:14b"
             ;;
 
-            
+        --default-qwen3-8b)
+            create_agent_launcher "qwen3:8b"
+            ;;
+
+        --default-gemma3-27b)
+            create_agent_launcher "gemma3:27b"
+            ;;
 
         --help)
             # Display usage information
