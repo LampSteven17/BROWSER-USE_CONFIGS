@@ -44,7 +44,7 @@ create_agent_launcher() {
     sed -i '15i\llm = ChatOllama(model="'$model'")' "$HOME/BROWSER-USE_CONFIGS/agents/default_agent.py"
     
     # Create the agent launcher script
-    echo "source buVenv/bin/activate;xvfb-run -a python3 $HOME/BROWSER-USE_CONFIGS/agents/default_agent.py >> $HOME/LOGS/\$(date '+%Y-%m-%d_%H-%M-%S').$config_name.log" > "$HOME/agent-launcher.sh"
+    echo "source buVenv/bin/activate;xvfb-run -a python3 $HOME/BROWSER-USE_CONFIGS/agents/default_agent.py >> $HOME/LOGS/\$(date '+%Y-%m-%d_%H-%M-%S').default_agent.log" > "$HOME/agent-launcher.sh"
 }
 
 # Loop through all the positional parameters
