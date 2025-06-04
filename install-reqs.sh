@@ -6,13 +6,17 @@ mkdir $HOME/LOGS
 ##### INSTALL CUDA REQUIREMENTS #####
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-keyring_1.1-1_all.deb
 sudo dpkg -i cuda-keyring_1.1-1_all.deb
-sudo apt-get update
+sudo apt-get update -y
 sudo apt-get -y install cuda-toolkit-12-9
 sudo apt-get install -y cuda-drivers
 
 ##### INSTALL LINUX REQUIREMENTS #####
 sudo apt-get update -y
-sudo apt-get install python3.12-venv -y
+
+sudo add-apt-repository ppa:deadsnakes/ppa -y
+sudo apt update -y
+sudo apt-get install python3.11 -y
+sudo apt-get install python3.11-venv -y
 sudo apt-get install xvfb -y
 
 #### INSTALL OLLAMA
@@ -20,7 +24,7 @@ curl -fsSL https://ollama.com/install.sh | sh
 
 
 #### INSTALL BROWSER USE
-python3.12 -m venv buVenv
+python3.11 -m venv buVenv
 source buVenv/bin/activate
 pip install browser-use
 playwright install chromium --with-deps --no-shell
