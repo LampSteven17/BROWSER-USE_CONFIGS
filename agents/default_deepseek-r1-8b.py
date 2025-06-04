@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 import asyncio
 
-llm = ChatOllama(model="deepseek-r1:8b")
+llm = ChatOllama(model="phi4:14b")
 
 async def main():
     # Configure browser to fix sandboxing issue
