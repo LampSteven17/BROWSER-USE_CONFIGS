@@ -33,11 +33,11 @@ playwright install chromium --with-deps --no-shell
 while [ ! -z "$1" ]; do
     case "$1" in
 
-        --default-deepseek8b)
+        --default-phi4-14b)
             # Action for DEFAULT CONFIGURATION
-            ollama pull deepseek-r1:8b
-            echo "USING DEFAULT:Deepseek R1 8B Configuration"
-            echo "source buVenv/bin/activate;xvfb-run -a python3 $HOME/BROWSER-USE_CONFIGS/agents/default_deepseek-r1-8b.py >> $HOME/LOGS/\$(date '+%Y-%m-%d_%H-%M-%S').default-agent.log" > $HOME/agent-launcher.sh
+            ollama pull phi4:14b
+            echo "USING DEFAULT:Phi 4 14b Configuration"
+            echo "source buVenv/bin/activate;xvfb-run -a python3 $HOME/BROWSER-USE_CONFIGS/agents/default_microsoft_phi4-14b.py >> $HOME/LOGS/\$(date '+%Y-%m-%d_%H-%M-%S').default_microsoft_phi4-14b.log" > $HOME/agent-launcher.sh
             ;;
 
             
